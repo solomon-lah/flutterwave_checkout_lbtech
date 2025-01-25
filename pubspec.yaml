@@ -1,6 +1,6 @@
 name: flutterwave_checkout_lbtech
 description: "A Flutter project for Flutterwave checkout. It implements the flutterwave html checkout (https://developer.flutterwave.com/docs/html-checkout)."
-version: 0.0.5
+version: 0.0.6
 homepage: "https://github.com/solomon-lah/flutterwave_checkout_lbtech"
 
 environment:
@@ -19,6 +19,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^3.0.0
+  dart_format:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

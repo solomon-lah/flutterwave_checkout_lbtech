@@ -7,6 +7,7 @@ import 'package:flutterwave_checkout_lbtech/utils/custom_extension.dart';
 class FlwCheckoutScreen extends StatefulWidget {
   /// FlwCheckout request model
   final FlwCheckoutRequest flwCheckoutRequest;
+
   /// the constructor
   const FlwCheckoutScreen({required this.flwCheckoutRequest, super.key});
 
