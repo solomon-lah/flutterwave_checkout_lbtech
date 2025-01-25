@@ -22,3 +22,7 @@
 ## 0.0.6
 
 * Solved pub dev score issues.
+
+## 0.0.7
+
+* Edited readme.

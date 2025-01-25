@@ -2,8 +2,7 @@
 
 ## Introduction
 The Flutter package helps you create seamless payment experiences in your dart mobile app. It implements the [flutterwave html checkout](https://developer.flutterwave.com/docs/html-checkout) for payment collection.
-Kindly note this a community package. [flutterwave_standard](https://pub.dev/packages/flutterwave_standard) is the official package developed by the flutter wave team. 
-Motivation behind this project is because of the analysis issues I encountered with the official **flutter_standard** package as it does not support some latest dependencies used by my project.
+Kindly note this a community package; [flutterwave_standard](https://pub.dev/packages/flutterwave_standard) is the official package developed by the flutter wave team. 
 ## Supported Platforms
 - Android
 - iOS
