@@ -3,8 +3,11 @@ import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:flutterwave_checkout_lbtech/models/flw_checkout_request.dart';
 import 'package:flutterwave_checkout_lbtech/utils/custom_extension.dart';
 
+/// the screen that is displayed for checkout
 class FlwCheckoutScreen extends StatefulWidget {
+  /// FlwCheckout request model
   final FlwCheckoutRequest flwCheckoutRequest;
+  /// the constructor
   const FlwCheckoutScreen({required this.flwCheckoutRequest, super.key});
 
   @override
