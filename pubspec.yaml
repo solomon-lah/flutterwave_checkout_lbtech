@@ -1,7 +1,7 @@
 name: flutterwave_checkout_lbtech
 description: "A Flutter project for Flutterwave checkout"
 version: 0.0.1
-homepage:
+homepage: "https://github.com/solomon-lah/flutterwave_checkout_lbtech"
 
 environment:
   sdk: '>=3.3.0 <4.0.0'
