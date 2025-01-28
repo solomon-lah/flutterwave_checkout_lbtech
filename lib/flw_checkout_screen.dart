@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:flutterwave_checkout_lbtech/models/flw_checkout_request.dart';
+import 'package:flutterwave_checkout_lbtech/models/result_from_flw_checkout.dart';
 import 'package:flutterwave_checkout_lbtech/utils/custom_extension.dart';
 
 /// the screen that is displayed for checkout
@@ -40,7 +41,7 @@ class _FlwCheckoutScreenState extends State<FlwCheckoutScreen> {
                   <body>
                       <div class="d-flex justify-content-center" style="margin-top:500px;font-size:2rem">
                       <form method="POST" action="https://checkout.flutterwave.com/v3/hosted/pay">
-                    <p class="justify-content-center">You are about to make a payment of ${widget.flwCheckoutRequest.amount.toCurrencyFormat()}</p>
+                    <p class="justify-content-center">You are about to make a payment of ${widget.flwCheckoutRequest.currency} ${widget.flwCheckoutRequest.amount.toCurrencyFormat()}</p>
                     <p class="justify-content-center">Click the button below to continue</p>
                           <input type="hidden" name="public_key" value="${widget.flwCheckoutRequest.publicKey}" />
                           <input type="hidden" name="tx_ref" value="${widget.flwCheckoutRequest.transactionRef}" />
@@ -77,15 +78,18 @@ class _FlwCheckoutScreenState extends State<FlwCheckoutScreen> {
                   widget.flwCheckoutRequest.redirectUrl.toLowerCase())) {
                 final Map<String, String> queryParameters = url.queryParameters;
 
-                if (widget.flwCheckoutRequest.onSuccess != null) {
-                  widget.flwCheckoutRequest.onSuccess!(queryParameters);
-                }
+                final ResultFromFlwCheckout resultFromFlwCheckout = ResultFromFlwCheckout.fromMap(queryParameters);
                 // showToast(status);
-                Navigator.pop(context, queryParameters);
+                Navigator.pop(context, resultFromFlwCheckout);
               }
             },
             onLoadStop: (controller, url) {},
             onReceivedHttpError: (controller, url, statusCode) {
+              if(statusCode.statusCode == 400){
+                final ResultFromFlwCheckout resultFromFlwCheckout = ResultFromFlwCheckout(referenceNumber: widget.flwCheckoutRequest.transactionRef, status: "successful");
+                Navigator.pop(context, resultFromFlwCheckout);
+                return;
+              }
               if (widget.flwCheckoutRequest.onError != null) {
                 widget.flwCheckoutRequest
                     .onError!(statusCode.statusCode.toString());
@@ -100,7 +104,7 @@ class _FlwCheckoutScreenState extends State<FlwCheckoutScreen> {
             },
             onProgressChanged: (controller, progress) {},
             initialSettings: InAppWebViewSettings(
-                cacheMode: CacheMode.LOAD_NO_CACHE, clearSessionCache: true),
+                cacheMode: CacheMode.LOAD_DEFAULT, clearSessionCache: false),
           ),
         ),
       ),

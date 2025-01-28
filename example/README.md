@@ -1,19 +1,22 @@
 ```dart
 import 'package:flutterwave_checkout_lbtech/models/flw_checkout_request.dart';
 import 'package:flutterwave_checkout_lbtech/flutterwave_checkout_lbtech.dart';
-final FlwCheckoutRequest flwCheckoutRequest = FlwCheckoutRequest(
-        redirectUrl: "https://mysite.com",// ensure it is a valid url 
+import 'package:flutterwave_checkout_lbtech/models/result_from_flw_checkout.dart';
+void _processPayment() async {
+    final FlwCheckoutRequest flwCheckoutRequest = FlwCheckoutRequest(
+        redirectUrl: "https:/google.com",//replace with a valid url
         amount: 2000.50,
-        email: "mail@gmail.com",
+        email: "", //insert customer's name
         transactionRef: DateTime.now().millisecondsSinceEpoch.toString(),
         customerName: "Solomon Oluwafemi",
         currency: "NGN",
-        onSuccess: (data) {},
         onError: (message) {
           
         },
-        publicKey: "FLWPUBK_TEST-gigiggjgjgjggjgjgvvnvn-X");
-
-await FlutterwaveChecoutLbtech.checkout(
-            checkoutRequest: flwCheckoutRequest, context: context);        
+        //insert your public key 
+        publicKey: "");
+    final ResultFromFlwCheckout? resultFromFlwCheckout = await FlutterwaveChecoutLbtech.checkout(
+            checkoutRequest: flwCheckoutRequest, context: context);
+    
+  }       
 ```

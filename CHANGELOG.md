@@ -26,3 +26,7 @@
 ## 0.0.7
 
 * Edited readme.
+
+## 0.0.8
+
+* Modified object returned from checkout.

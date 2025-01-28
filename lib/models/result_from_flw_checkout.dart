@@ -1,35 +1,36 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
+/// Object returned when payment is successful
 class ResultFromFlwCheckout {
   final String referenceNumber;
-  final bool completed;
+  final String status;
   ResultFromFlwCheckout({
     required this.referenceNumber,
-    required this.completed,
+    required this.status,
   });
 
   ResultFromFlwCheckout copyWith({
     String? referenceNumber,
-    bool? completed,
+    String? status,
   }) {
     return ResultFromFlwCheckout(
       referenceNumber: referenceNumber ?? this.referenceNumber,
-      completed: completed ?? this.completed,
+      status: status ?? this.status,
     );
   }
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'referenceNumber': referenceNumber,
-      'completed': completed,
+      'completed': status,
     };
   }
 
   factory ResultFromFlwCheckout.fromMap(Map<String, dynamic> map) {
     return ResultFromFlwCheckout(
-      referenceNumber: map['referenceNumber'] as String,
-      completed: map['completed'] as bool,
+      referenceNumber: map['tx_ref'] as String,
+      status: map['status'] as String,
     );
   }
 
@@ -41,16 +42,16 @@ class ResultFromFlwCheckout {
 
   @override
   String toString() =>
-      'ResultFromFlwCheckout(referenceNumber: $referenceNumber, completed: $completed)';
+      'ResultFromFlwCheckout(referenceNumber: $referenceNumber, status: $status)';
 
   @override
   bool operator ==(covariant ResultFromFlwCheckout other) {
     if (identical(this, other)) return true;
 
     return other.referenceNumber == referenceNumber &&
-        other.completed == completed;
+        other.status == status;
   }
 
   @override
-  int get hashCode => referenceNumber.hashCode ^ completed.hashCode;
+  int get hashCode => referenceNumber.hashCode ^ status.hashCode;
 }
