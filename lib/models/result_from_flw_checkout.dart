@@ -48,8 +48,7 @@ class ResultFromFlwCheckout {
   bool operator ==(covariant ResultFromFlwCheckout other) {
     if (identical(this, other)) return true;
 
-    return other.referenceNumber == referenceNumber &&
-        other.status == status;
+    return other.referenceNumber == referenceNumber && other.status == status;
   }
 
   @override

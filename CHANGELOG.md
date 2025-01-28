@@ -30,3 +30,7 @@
 ## 0.0.8
 
 * Modified object returned from checkout.
+
+## 0.0.9
+
+* Formatted some files.

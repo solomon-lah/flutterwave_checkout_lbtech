@@ -78,15 +78,20 @@ class _FlwCheckoutScreenState extends State<FlwCheckoutScreen> {
                   widget.flwCheckoutRequest.redirectUrl.toLowerCase())) {
                 final Map<String, String> queryParameters = url.queryParameters;
 
-                final ResultFromFlwCheckout resultFromFlwCheckout = ResultFromFlwCheckout.fromMap(queryParameters);
+                final ResultFromFlwCheckout resultFromFlwCheckout =
+                    ResultFromFlwCheckout.fromMap(queryParameters);
                 // showToast(status);
                 Navigator.pop(context, resultFromFlwCheckout);
               }
             },
             onLoadStop: (controller, url) {},
             onReceivedHttpError: (controller, url, statusCode) {
-              if(statusCode.statusCode == 400){
-                final ResultFromFlwCheckout resultFromFlwCheckout = ResultFromFlwCheckout(referenceNumber: widget.flwCheckoutRequest.transactionRef, status: "successful");
+              if (statusCode.statusCode == 400) {
+                final ResultFromFlwCheckout resultFromFlwCheckout =
+                    ResultFromFlwCheckout(
+                        referenceNumber:
+                            widget.flwCheckoutRequest.transactionRef,
+                        status: "successful");
                 Navigator.pop(context, resultFromFlwCheckout);
                 return;
               }
