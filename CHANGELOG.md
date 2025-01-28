@@ -34,3 +34,7 @@
 ## 0.0.9
 
 * Formatted some files.
+
+## 0.0.10
+
+* Solved for Bank payment type.

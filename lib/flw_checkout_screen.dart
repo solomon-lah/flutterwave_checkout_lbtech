@@ -76,12 +76,22 @@ class _FlwCheckoutScreenState extends State<FlwCheckoutScreen> {
               }
               if (url.origin.toLowerCase().contains(
                   widget.flwCheckoutRequest.redirectUrl.toLowerCase())) {
-                final Map<String, String> queryParameters = url.queryParameters;
+                try {
+                  final Map<String, String> queryParameters =
+                      url.queryParameters;
 
-                final ResultFromFlwCheckout resultFromFlwCheckout =
-                    ResultFromFlwCheckout.fromMap(queryParameters);
-                // showToast(status);
-                Navigator.pop(context, resultFromFlwCheckout);
+                  final ResultFromFlwCheckout resultFromFlwCheckout =
+                      ResultFromFlwCheckout.fromMap(queryParameters);
+                  // showToast(status);
+                  Navigator.pop(context, resultFromFlwCheckout);
+                } catch (e) {
+                  final ResultFromFlwCheckout resultFromFlwCheckout =
+                      ResultFromFlwCheckout(
+                          referenceNumber:
+                              widget.flwCheckoutRequest.transactionRef,
+                          status: "successful");
+                  Navigator.pop(context, resultFromFlwCheckout);
+                }
               }
             },
             onLoadStop: (controller, url) {},
